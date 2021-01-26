@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio -->
+<jasperTemplate xmlns="http://jasperreports.sourceforge.net/jasperreports/template" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/template http://jasperreports.sourceforge.net/xsd/jaspertemplate.xsd">
+	<style name="TitrePrincipal" mode="Opaque" forecolor="#FFFFFF" backcolor="#000000" hTextAlign="Center" vTextAlign="Middle" fontName="Gentium" fontSize="18"/>
+	<style name="EntêteDolonne" mode="Opaque" backcolor="#DED3D3"/>
+</jasperTemplate>
