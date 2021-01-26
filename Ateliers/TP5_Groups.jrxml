@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Groups" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="a88340e2-ee14-4cfe-b2cb-1163088e0d90">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[select * from orders order by shipcountry, shipregion, shipcity]]>
+	</queryString>
+	<field name="SHIPCOUNTRY" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SHIPREGION" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SHIPCITY" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FREIGHT" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="TOTAL_COUNTRY" class="java.lang.Double" resetType="Group" resetGroup="SHIPCOUNTRY" calculation="Sum">
+		<variableExpression><![CDATA[$F{FREIGHT}]]></variableExpression>
+	</variable>
+	<variable name="AVG_COUNTRY" class="java.lang.Double" resetType="Group" resetGroup="SHIPCOUNTRY" calculation="Average">
+		<variableExpression><![CDATA[$F{FREIGHT}]]></variableExpression>
+	</variable>
+	<variable name="MAX_COUNTRY" class="java.lang.Double" resetType="Group" resetGroup="SHIPCOUNTRY" calculation="Highest">
+		<variableExpression><![CDATA[$F{FREIGHT}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_REGION" class="java.lang.Double" resetType="Group" resetGroup="SHIPREGION" calculation="Sum">
+		<variableExpression><![CDATA[$F{FREIGHT}]]></variableExpression>
+	</variable>
+	<variable name="AVG_REGION" class="java.lang.Double" resetType="Group" resetGroup="SHIPREGION" calculation="Average">
+		<variableExpression><![CDATA[$F{FREIGHT}]]></variableExpression>
+	</variable>
+	<variable name="MAX_REGION" class="java.lang.Double" resetType="Group" resetGroup="SHIPREGION" calculation="Highest">
+		<variableExpression><![CDATA[$F{FREIGHT}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_CITY" class="java.lang.Double" resetType="Group" resetGroup="SHIPCITY" calculation="Sum">
+		<variableExpression><![CDATA[$F{FREIGHT}]]></variableExpression>
+	</variable>
+	<variable name="AVG_CITY" class="java.lang.Double" resetType="Group" resetGroup="SHIPCITY" calculation="Average">
+		<variableExpression><![CDATA[$F{FREIGHT}]]></variableExpression>
+	</variable>
+	<variable name="MAX_CITY" class="java.lang.Double" resetType="Group" resetGroup="SHIPCITY" calculation="Highest">
+		<variableExpression><![CDATA[$F{FREIGHT}]]></variableExpression>
+	</variable>
+	<variable name="MAX_TOTAL_COUNTRY" class="java.math.BigDecimal" calculation="Highest">
+		<variableExpression><![CDATA[$V{TOTAL_COUNTRY}]]></variableExpression>
+	</variable>
+	<group name="SHIPCOUNTRY" minHeightToStartNewPage="20">
+		<groupExpression><![CDATA[$F{SHIPCOUNTRY}]]></groupExpression>
+		<groupFooter>
+			<band height="32">
+				<textField hyperlinkType="ReportExecution" bookmarkLevel="1">
+					<reportElement style="SubTitle" x="0" y="0" width="178" height="24" forecolor="#006600" uuid="0de78bf9-99bc-4a42-ac55-86847d91f9a6"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{SHIPCOUNTRY}]]></textFieldExpression>
+					<anchorNameExpression><![CDATA[$F{SHIPCOUNTRY}]]></anchorNameExpression>
+					<hyperlinkParameter name="_report">
+						<hyperlinkParameterExpression><![CDATA["/reports/TPS/ParameterWithoutPrompt"]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="SHIPCOUNTRY">
+						<hyperlinkParameterExpression><![CDATA[$F{SHIPCOUNTRY}]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+				</textField>
+				<textField pattern="###0.00;###0.00-">
+					<reportElement style="SubTitle" x="337" y="2" width="108" height="24" forecolor="#006600" uuid="aa49d116-4c44-4871-98a2-845bc9a2edf0"/>
+					<box rightPadding="4"/>
+					<textElement textAlignment="Right">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{AVG_COUNTRY}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00;###0.00-">
+					<reportElement style="SubTitle" x="449" y="2" width="103" height="24" forecolor="#006600" uuid="a5a20f07-55fd-43e5-bb72-095553a29eb2"/>
+					<box rightPadding="4"/>
+					<textElement textAlignment="Right">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{MAX_COUNTRY}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement stretchType="RelativeToBandHeight" x="222" y="0" width="1" height="32" uuid="d98bc9c2-a41e-43e4-b262-dd2d1382ab92"/>
+				</line>
+				<line>
+					<reportElement x="334" y="0" width="1" height="32" uuid="b87bc2dc-4465-4b07-b894-1d4ba7ef49ec"/>
+				</line>
+				<line>
+					<reportElement x="445" y="0" width="1" height="32" uuid="10412a54-9e65-4cd4-9903-549aebcad44c"/>
+				</line>
+				<textField pattern="###0.00;###0.00-">
+					<reportElement style="SubTitle" x="224" y="2" width="110" height="24" forecolor="#006600" uuid="f0d80eb8-c497-481e-9fc3-d38efb91d3b8"/>
+					<box rightPadding="4"/>
+					<textElement textAlignment="Right">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_COUNTRY}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="31" width="555" height="1" forecolor="#000000" uuid="e48a4889-8d10-46b7-9c3d-694557d01893">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineWidth="2.0" lineStyle="Double" lineColor="#006600"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="SHIPREGION">
+		<groupExpression><![CDATA[$F{SHIPREGION}]]></groupExpression>
+		<groupFooter>
+			<band height="28">
+				<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+				<printWhenExpression><![CDATA[$F{SHIPREGION} != null]]></printWhenExpression>
+				<textField bookmarkLevel="2">
+					<reportElement style="SubTitle" x="0" y="0" width="80" height="28" isRemoveLineWhenBlank="true" uuid="0e9b3998-9379-40c6-8077-f551a0e158d4">
+						<printWhenExpression><![CDATA[$F{SHIPREGION} != null]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{SHIPREGION}]]></textFieldExpression>
+					<anchorNameExpression><![CDATA[$F{SHIPREGION}]]></anchorNameExpression>
+				</textField>
+				<textField pattern="###0.00;###0.00-">
+					<reportElement style="SubTitle" x="224" y="0" width="110" height="28" uuid="38b0082f-08a2-4116-98b4-bf7413921cd0">
+						<printWhenExpression><![CDATA[$F{SHIPREGION} != null]]></printWhenExpression>
+					</reportElement>
+					<box rightPadding="4"/>
+					<textElement textAlignment="Right">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_REGION}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00;###0.00-">
+					<reportElement style="SubTitle" x="337" y="0" width="108" height="28" uuid="96561000-2fde-4976-b6c6-29cbbee16941">
+						<printWhenExpression><![CDATA[$F{SHIPREGION} != null]]></printWhenExpression>
+					</reportElement>
+					<box rightPadding="4"/>
+					<textElement textAlignment="Right">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{AVG_REGION}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00;###0.00-">
+					<reportElement style="SubTitle" x="449" y="0" width="103" height="28" uuid="507bf22f-6263-4aca-940f-ae78af9a4c2a">
+						<printWhenExpression><![CDATA[$F{SHIPREGION} != null]]></printWhenExpression>
+					</reportElement>
+					<box rightPadding="4"/>
+					<textElement textAlignment="Right">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{MAX_REGION}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="222" y="0" width="1" height="28" uuid="6ece55fc-f1cf-4c64-80aa-77e9ae9a6cdf"/>
+				</line>
+				<line>
+					<reportElement x="334" y="0" width="1" height="28" uuid="80748bf8-7981-4ef5-af33-2d29eba85ac4"/>
+				</line>
+				<line>
+					<reportElement x="445" y="0" width="1" height="28" uuid="0fff0fbb-ba54-4db4-99b3-f991fe0439c3"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="SHIPCITY">
+		<groupExpression><![CDATA[$F{SHIPCITY}]]></groupExpression>
+		<groupFooter>
+			<band height="25">
+				<textField bookmarkLevel="3">
+					<reportElement x="1" y="0" width="221" height="25" uuid="2658defe-9685-40a0-8367-673f879037d3"/>
+					<box topPadding="5"/>
+					<textFieldExpression><![CDATA[$F{SHIPCITY}]]></textFieldExpression>
+					<anchorNameExpression><![CDATA[$F{SHIPCITY}]]></anchorNameExpression>
+				</textField>
+				<textField pattern="###0.00;###0.00-">
+					<reportElement x="449" y="0" width="103" height="20" uuid="230ffa5e-4dda-4348-8e8f-3b63e65a4f17"/>
+					<box topPadding="5" rightPadding="4"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{MAX_CITY}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00;###0.00-">
+					<reportElement x="337" y="0" width="108" height="20" uuid="032ede25-1636-4bb1-869e-04af7d4d9f44"/>
+					<box topPadding="5" rightPadding="4"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{AVG_CITY}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="222" y="0" width="1" height="25" uuid="ff47eb6f-a1cf-489d-bbd7-d733e11d185b"/>
+				</line>
+				<line>
+					<reportElement x="334" y="0" width="1" height="25" uuid="12aeb260-b0b9-45a6-a9b3-298e864ea58c"/>
+				</line>
+				<line>
+					<reportElement stretchType="RelativeToBandHeight" x="445" y="0" width="1" height="25" uuid="5de67507-9a75-4485-91e5-c11bc8c0eb36"/>
+				</line>
+				<textField pattern="###0.00;###0.00-">
+					<reportElement x="224" y="0" width="110" height="25" uuid="0d7fdaf4-32e1-4346-8cf8-33c777e3e920"/>
+					<box topPadding="4" rightPadding="4"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{TOTAL_CITY}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="8e4435b8-647b-499d-92b8-73f0dd3fcee0"/>
+				<imageExpression><![CDATA["img/leaf_banner_green.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="030015de-73ec-48e4-8e78-85d191a3efa8"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Leaf Green Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="100" y="46" width="174" height="22" uuid="59a979d1-3729-44db-88cd-d58d0877273a"/>
+				<text><![CDATA[Leaf Green SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="16150026-ad1f-4ddb-814a-6eaa5b3b92a4"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="260" y="14" width="42" height="15" uuid="2cf2f99d-49d5-4387-8a8d-10e68995af4a"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="372" y="15" width="43" height="15" uuid="fa9cb60c-255a-48e4-accc-9c6326c72734"/>
+				<text><![CDATA[Moy.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="473" y="15" width="36" height="15" uuid="2cafa5af-51be-4023-88ca-3107fda26d03"/>
+				<text><![CDATA[Max]]></text>
+			</staticText>
+			<line>
+				<reportElement x="222" y="0" width="1" height="36" uuid="5deb2b1d-4c8e-49a3-a382-d4f64422a3f6"/>
+			</line>
+			<line>
+				<reportElement x="334" y="6" width="1" height="29" uuid="86001e09-9eb6-4c2d-8c44-a5f6bcf9b065"/>
+			</line>
+			<line>
+				<reportElement x="445" y="6" width="1" height="29" uuid="f45994fc-04eb-4fef-83dd-ae9c5671ee13"/>
+			</line>
+			<line>
+				<reportElement x="0" y="35" width="552" height="1" uuid="6f27665e-631f-43cb-bcb0-44628e8f48d9"/>
+			</line>
+		</band>
+	</columnHeader>
+	<columnFooter>
+		<band height="28" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1" uuid="46fc4135-ac23-4ff9-a5a3-c596bc58d840"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="21f7d699-1ea0-48a1-a694-45a2506656dd"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="beef846b-3802-42a3-acb9-3060c4b024d4"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="c0863c83-1f3c-4a87-8969-bb27c26c516c"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="50"/>
+	</summary>
+</jasperReport>
