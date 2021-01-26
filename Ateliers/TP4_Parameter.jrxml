@@ -143,7 +143,7 @@ ORDER BY ORDERS."SHIPCITY" ASC,
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="92">
+		<band height="35">
 			<frame>
 				<reportElement mode="Opaque" x="0" y="0" width="555" height="35" backcolor="#CCCCCC" uuid="18db1a8a-1145-4c0c-8789-57a6694afc83"/>
 				<box>
@@ -175,16 +175,6 @@ ORDER BY ORDERS."SHIPCITY" ASC,
 					</textField>
 				</frame>
 			</frame>
-			<textField>
-				<reportElement x="340" y="50" width="100" height="30" uuid="09886a31-d357-46b7-9ced-3a09be4a0746"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-			<textField evaluationTime="Report">
-				<reportElement x="495" y="62" width="100" height="30" uuid="596ba246-b962-40d1-897b-0345cd4fd563"/>
-				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
 		</band>
 	</pageFooter>
 </jasperReport>
