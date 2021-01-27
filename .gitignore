@@ -1,6 +1,7 @@
 .metadata/
-*.jasper
+**/*.jasper
 *.class
 **/.settings/
 **/.classpath
 **/.project
+**/*.class
