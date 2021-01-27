@@ -115,7 +115,7 @@ order by shipcountry]]>
 		</group>
 	</subDataset>
 	<queryString>
-		<![CDATA[select * from address order by  "ADDRESS"."LASTNAME" , "ADDRESS"."FIRSTNAME" ]]>
+		<![CDATA[select * from address order by  "ADDRESS"."LASTNAME" , "ADDRESS"."FIRSTNAME"]]>
 	</queryString>
 	<field name="ID" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="ID"/>
@@ -143,110 +143,117 @@ order by shipcountry]]>
 		<property name="com.jaspersoft.studio.field.tree.path" value="ADDRESS"/>
 	</field>
 	<detail>
-		<band height="258" splitType="Stretch">
+		<band height="287" splitType="Stretch">
 			<textField>
-				<reportElement x="10" y="0" width="140" height="30" uuid="b317fccc-1bcf-42be-86ec-f7519ccb7ca7"/>
+				<reportElement x="10" y="0" width="270" height="30" uuid="b317fccc-1bcf-42be-86ec-f7519ccb7ca7"/>
 				<textFieldExpression><![CDATA[$F{FIRSTNAME} + " " +$F{LASTNAME}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="130" y="58" width="200" height="200" uuid="a938e7c5-58f7-4a42-9c12-babde2192ceb">
+				<reportElement x="92" y="87" width="200" height="200" uuid="74d5ac97-994c-4a87-b72b-836eabaf6398">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="CommandeDunEmploye" uuid="fdf4d80d-8fb7-4e84-a25f-7f908a3a921a">
+					<datasetRun subDataset="CommandeDunEmploye" uuid="4ba63716-41bc-479f-8c66-668317670dee">
+						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+						<datasetParameter name="EMPLOYEE_ID">
+							<datasetParameterExpression><![CDATA[$F{ID}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:columnGroup width="200" uuid="b29cf0d2-2fe6-4762-bf04-b88737013bcd">
+					<jr:columnGroup width="440" uuid="236c8b79-46d8-401d-885e-657c2e1c117c">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonnes [4]"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="200" height="30" uuid="df7eaf12-5fe9-4ee5-806f-16d89dab3f6e"/>
-								<textFieldExpression><![CDATA["Commandes "]]></textFieldExpression>
-							</textField>
+							<staticText>
+								<reportElement x="0" y="0" width="440" height="30" uuid="f1173275-34c0-4339-afc5-992cd63196fd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Commandes]]></text>
+							</staticText>
 						</jr:tableHeader>
-						<jr:column width="50" uuid="a48324aa-96ef-4479-9b52-f3472ef9a21d">
+						<jr:groupHeader groupName="SHIPCOUNTRY">
+							<jr:cell style="Table_CH" height="30" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="440" height="30" uuid="9a0710c4-86c7-4e41-bfab-4a55d73309da"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{SHIPCOUNTRY}]]></textFieldExpression>
+								</textField>
+							</jr:cell>
+						</jr:groupHeader>
+						<jr:groupFooter groupName="SHIPCOUNTRY">
+							<jr:cell style="Table_CH" height="30" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="440" height="30" uuid="7e80dc5f-04a7-4b83-9b78-16b16826d266"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$V{SHIPCOUNTRY_COUNT}]]></textFieldExpression>
+								</textField>
+							</jr:cell>
+						</jr:groupFooter>
+						<jr:column width="110" uuid="1b5feccd-1b29-40a4-af29-d8b6e2cb2126">
 							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne1"/>
 							<jr:groupHeader groupName="SHIPCOUNTRY">
-								<jr:cell style="Table_CH" height="30" rowSpan="1"/>
+								<jr:cell style="Table_CH" height="30" rowSpan="1">
+									<staticText>
+										<reportElement x="0" y="0" width="110" height="30" uuid="0f880b0d-e068-4c82-a69b-7d839f7532a9"/>
+										<text><![CDATA[Client]]></text>
+									</staticText>
+								</jr:cell>
 							</jr:groupHeader>
-							<jr:groupFooter groupName="SHIPCOUNTRY">
-								<jr:cell style="Table_CH" height="30" rowSpan="1"/>
-							</jr:groupFooter>
-							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-								<staticText>
-									<reportElement x="0" y="0" width="50" height="30" uuid="b1f7e0f2-8f3b-4e1a-af4e-c210c7f35438"/>
-									<text><![CDATA[CUSTOMERID]]></text>
-								</staticText>
-							</jr:columnHeader>
 							<jr:detailCell style="Table_TD" height="30">
 								<textField>
-									<reportElement x="0" y="0" width="50" height="30" uuid="431b6288-ed5d-4e6a-9cbe-9147945cd2f3"/>
+									<reportElement x="0" y="0" width="110" height="30" uuid="361a779b-3553-435b-a77e-07fc66ea39fc"/>
 									<textFieldExpression><![CDATA[$F{CUSTOMERID}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
-						<jr:column width="50" uuid="31416abb-ca18-4f8a-bfff-feac8fa04d96">
+						<jr:column width="110" uuid="0eeecdb9-8560-4053-bfa5-e306d998d1bd">
 							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne2"/>
 							<jr:groupHeader groupName="SHIPCOUNTRY">
-								<jr:cell style="Table_CH" height="30" rowSpan="1"/>
+								<jr:cell style="Table_CH" height="30" rowSpan="1">
+									<staticText>
+										<reportElement x="0" y="0" width="110" height="30" uuid="70b44d5e-f86b-49b8-86dd-98ba1cc8c534"/>
+										<text><![CDATA[Adresse]]></text>
+									</staticText>
+								</jr:cell>
 							</jr:groupHeader>
-							<jr:groupFooter groupName="SHIPCOUNTRY">
-								<jr:cell style="Table_CH" height="30" rowSpan="1"/>
-							</jr:groupFooter>
-							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-								<staticText>
-									<reportElement x="0" y="0" width="50" height="30" uuid="e2181103-2406-41d9-a84d-50cc74f7878a"/>
-									<text><![CDATA[SHIPADDRESS]]></text>
-								</staticText>
-							</jr:columnHeader>
 							<jr:detailCell style="Table_TD" height="30">
 								<textField>
-									<reportElement x="0" y="0" width="50" height="30" uuid="cffa147d-fe2f-4ad0-bc5a-2dd96334d6ce"/>
+									<reportElement x="0" y="0" width="110" height="30" uuid="de2f996c-0467-4224-ba45-db0aa854659b"/>
 									<textFieldExpression><![CDATA[$F{SHIPADDRESS}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
-						<jr:column width="50" uuid="c931421b-058e-42a9-900c-cbdc340da2f9">
+						<jr:column width="110" uuid="382c1915-8a56-4fec-bb08-e8c65c798565">
 							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne3"/>
 							<jr:groupHeader groupName="SHIPCOUNTRY">
-								<jr:cell style="Table_CH" height="30" rowSpan="1"/>
+								<jr:cell style="Table_CH" height="30" rowSpan="1">
+									<staticText>
+										<reportElement x="0" y="0" width="110" height="30" uuid="cf0f92fb-14dd-4938-9546-6796093a5d2f"/>
+										<text><![CDATA[Code Postal]]></text>
+									</staticText>
+								</jr:cell>
 							</jr:groupHeader>
-							<jr:groupFooter groupName="SHIPCOUNTRY">
-								<jr:cell style="Table_CH" height="30" rowSpan="1"/>
-							</jr:groupFooter>
-							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-								<staticText>
-									<reportElement x="0" y="0" width="50" height="30" uuid="97907390-628b-4b8c-9ebb-af8e2226963d"/>
-									<text><![CDATA[SHIPPOSTALCODE]]></text>
-								</staticText>
-							</jr:columnHeader>
 							<jr:detailCell style="Table_TD" height="30">
 								<textField>
-									<reportElement x="0" y="0" width="50" height="30" uuid="b016e78c-b887-433f-862e-1ce25d47f623"/>
+									<reportElement x="0" y="0" width="110" height="30" uuid="d63e9fe8-2353-4efe-bd6b-64c42a378cf6"/>
 									<textFieldExpression><![CDATA[$F{SHIPPOSTALCODE}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
-						<jr:column width="50" uuid="a6aebad8-4c87-430b-b730-adc88204b09e">
+						<jr:column width="110" uuid="52a5c9c6-61cf-43c2-84e0-b932be9e611c">
 							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne4"/>
 							<jr:groupHeader groupName="SHIPCOUNTRY">
-								<jr:cell style="Table_CH" height="30" rowSpan="1"/>
+								<jr:cell style="Table_CH" height="30" rowSpan="1">
+									<staticText>
+										<reportElement x="0" y="0" width="110" height="30" uuid="4c21a1ef-5178-44ba-9c78-10ebedd7ac81"/>
+										<text><![CDATA[Ville]]></text>
+									</staticText>
+								</jr:cell>
 							</jr:groupHeader>
-							<jr:groupFooter groupName="SHIPCOUNTRY">
-								<jr:cell style="Table_CH" height="30" rowSpan="1"/>
-							</jr:groupFooter>
-							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-								<staticText>
-									<reportElement x="0" y="0" width="50" height="30" uuid="cf32ba9f-83c2-4d49-96de-fa6801ec0429"/>
-									<text><![CDATA[SHIPCITY]]></text>
-								</staticText>
-							</jr:columnHeader>
 							<jr:detailCell style="Table_TD" height="30">
 								<textField>
-									<reportElement x="0" y="0" width="50" height="30" uuid="705e352b-e26a-4625-aa1f-7a27b2e27f76"/>
+									<reportElement x="0" y="0" width="110" height="30" uuid="7ac277cf-3f30-41ed-af60-263b1951fe55"/>
 									<textFieldExpression><![CDATA[$F{SHIPCITY}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
