@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="My First Report" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="65b8d455-7d68-48d8-add0-74e25ec003a9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8081/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="jasperadmin"/>
+	<property name="ireport.jasperserver.report.resource" value="/reports/CompositeReport_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/reports/CompositeReport"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Opaque" backcolor="#F0EFEF" fontName="Times New Roman"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/dthibau/Formations/JasperReport/Work/workspace/TP7SousRapport/"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT * from "ADDRESS" order by "CITY"]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="FIRSTNAME" class="java.lang.String"/>
+	<field name="LASTNAME" class="java.lang.String"/>
+	<field name="STREET" class="java.lang.String"/>
+	<field name="CITY" class="java.lang.String"/>
+	<variable name="AVG_COUNTRY" class="java.lang.Double" calculation="System"/>
+	<variable name="NB_COUNTRY" class="java.lang.Integer" calculation="System"/>
+	<variable name="NB_CMD" class="java.lang.Integer"/>
+	<group name="CITY">
+		<groupExpression><![CDATA[$F{CITY}]]></groupExpression>
+		<groupHeader>
+			<band height="37">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="7" width="555" height="24" forecolor="#B89F7D" backcolor="#000000" uuid="5b42182b-9064-49eb-8f49-e665eb4ecd02"/>
+					<textField textAdjust="StretchHeight">
+						<reportElement style="SubTitle" isPrintRepeatedValues="false" x="2" y="0" width="479" height="24" forecolor="#FFFFFF" uuid="afe200c6-22d2-4f03-a6c1-b3c54b5a8469"/>
+						<textElement>
+							<font isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{CITY}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<image>
+				<reportElement x="456" y="0" width="99" height="132" uuid="885cd5ad-ca55-47dd-a9ec-5b73f803dd26"/>
+				<imageExpression><![CDATA["img/cherry.jpg"]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="046348f6-c296-4d1c-a503-bb38563942f9"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="6100a7c9-6174-4017-9ff4-c32c46344c82"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry Title]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="157" y="66" width="249" height="29" uuid="e6c19cde-9aab-4388-8a8d-12550cc20729"/>
+					<textElement>
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry SubTitle]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#CC0000" uuid="3088b69d-c554-4374-a317-ca3f385adfc9"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="307" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="e25a7106-cc23-4b0c-b51f-3960f256467c"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="274" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="e19c9125-c25f-449a-a605-cd267e3547c5">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.HorizontalRowLayout"/>
+				</reportElement>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="185" height="18" isPrintInFirstWholeBand="true" uuid="256e93be-d753-4464-9231-4013a2eba2d1"/>
+					<textElement markup="html">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA["<b>" + $F{FIRSTNAME} + "</b>"]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" positionType="Float" x="185" y="0" width="185" height="18" isPrintInFirstWholeBand="true" uuid="b400209f-ca91-48fa-b702-683deeafd771"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{LASTNAME}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" positionType="Float" x="370" y="0" width="185" height="18" isPrintInFirstWholeBand="true" uuid="c9db639b-26bf-4b55-9f53-2b0b6d083fac"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{STREET}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<subreport isUsingCache="true" runToBottom="true">
+				<reportElement x="55" y="152" width="500" height="6" isRemoveLineWhenBlank="true" printWhenGroupChanges="CITY" uuid="92803258-2174-40ae-80fc-331bbed43e9d"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<subreportParameter name="EMPLOYE_ID">
+					<subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<returnValue subreportVariable="AVG_COUNTRY" toVariable="AVG_COUNTRY"/>
+				<returnValue subreportVariable="NB_COUNTRY" toVariable="NB_COUNTRY"/>
+				<returnValue subreportVariable="NB_CMD" toVariable="NB_CMD"/>
+				<subreportExpression><![CDATA["/subreport/OrdersByEmploye.jrxml"]]></subreportExpression>
+			</subreport>
+			<frame>
+				<reportElement x="55" y="43" width="492" height="65" isRemoveLineWhenBlank="true" uuid="eda3d941-f55e-438b-b938-e4708d02b527"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+					<topPen lineWidth="1.0" lineStyle="Dotted"/>
+					<leftPen lineWidth="1.0" lineStyle="Dotted"/>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+					<rightPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textField evaluationTime="Band">
+					<reportElement style="Column header" x="0" y="45" width="274" height="20" uuid="fe54037b-d624-4b3e-aa03-c5a32531ca48"/>
+					<textFieldExpression><![CDATA["Nombre de commandes moyen par pays : "]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Band">
+					<reportElement style="Column header" x="0" y="25" width="492" height="20" uuid="7e6ff823-fa29-472f-a1c7-53c78b6551b8"/>
+					<textFieldExpression><![CDATA["Nombre de pays destinataires " + ($V{NB_CMD} == null ? 0 : $V{NB_COUNTRY})]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Band">
+					<reportElement style="Column header" x="0" y="0" width="492" height="20" uuid="a9eca8f1-4c76-4236-bd3c-e275f1f173af"/>
+					<textFieldExpression><![CDATA["Nombre de commandes " + ($V{NB_CMD} == null ? 0 : $V{NB_CMD})]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Band" pattern="###0.00;-###0.00">
+					<reportElement style="Column header" x="274" y="45" width="100" height="20" uuid="0b3cc6d4-b267-4f90-8842-0290ea5021e7"/>
+					<textFieldExpression><![CDATA[$V{NB_CMD} == null ? 0 : $V{NB_CMD}/$V{NB_COUNTRY}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement x="0" y="121" width="555" height="1" isRemoveLineWhenBlank="true" uuid="69224090-11f8-41b8-ab01-bbf6f44be39e">
+					<printWhenExpression><![CDATA[$V{NB_CMD} != null]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="199" y="132" width="190" height="20" isRemoveLineWhenBlank="true" uuid="5fa9897f-01f8-4234-b19e-4c21d8338a51">
+					<printWhenExpression><![CDATA[$V{NB_CMD} != null]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Détail des commandes]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="0" y="273" width="555" height="1" isRemoveLineWhenBlank="true" uuid="5d05af96-bc43-48fc-a97a-1fb34aaa4491"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="28d3288f-9cf3-4ab8-a3a7-ea681acb636f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="cd68e07c-20d2-4ba6-8e5d-f905717a0ac1"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="11f3a3b4-243f-4f6f-8d91-c27f83bef265"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="a22f6f91-53ce-4414-bd93-913ca0c05325"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="ba683e69-e12c-4de2-8f18-07dc8926708d"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
